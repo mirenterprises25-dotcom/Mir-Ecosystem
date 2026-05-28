@@ -1,0 +1,31 @@
+{
+  "tenant_id": "mir_enterprises_root",
+  "subsidiaries": [
+    {
+      "name": "MIR Clothing",
+      "financials": {
+        "Q1_2026_revenue": 450000,
+        "Q1_2026_expenses": 320000,
+        "current_cash_reserves": 1200000
+      },
+      "inventory": [
+        {"product": "Leather Jackets", "stock": 45, "unit_cost": 150, "retail_price": 400},
+        {"product": "Tracksuits", "stock": 500, "unit_cost": 40, "retail_price": 120}
+      ]
+    },
+    {
+      "name": "MIR Consulting",
+      "financials": {
+        "Q1_2026_revenue": 850000,
+        "Q1_2026_expenses": 200000,
+        "current_cash_reserves": 2500000
+      },
+      "active_contracts": 14
+    }
+  ],
+  "tax_status": {
+    "current_iva": 21.0,
+    "current_irpf": 15.0,
+    "last_filing_status": "compliant"
+  }
+}

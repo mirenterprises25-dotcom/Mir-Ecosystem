@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-dashboard
+  labels:
+    app: mir-ecosystem
+    component: frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mir-ecosystem
+      component: frontend
+  template:
+    metadata:
+      labels:
+        app: mir-ecosystem
+        component: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: ghcr.io/mir-enterprises/frontend-dashboard:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        env:
+        - name: NEXT_PUBLIC_API_URL
+          value: "https://api.mir-ecosystem.com"
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 10
+          periodSeconds: 15
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-dashboard
+  labels:
+    app: mir-ecosystem
+    component: frontend
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 3000
+    protocol: TCP
+  selector:
+    app: mir-ecosystem
+    component: frontend
